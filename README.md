@@ -1,6 +1,6 @@
-# token-mix
+# token-sale
 
-A bare-bones implementation of the Ethereum [ERC-20 standard](https://eips.ethereum.org/EIPS/eip-20), written in [Solidity](https://github.com/ethereum/solidity).
+A bare-bones implementation of the Ethereum with ERC20 tokens and conducting a tokenSale depending on differnet Sale Strategies (https://eips.ethereum.org/EIPS/eip-20), written in [Solidity](https://github.com/ethereum/solidity).
 
 For [Vyper](https://github.com/vyperlang/vyper), check out [`vyper-token-mix`](https://github.com/brownie-mix/vyper-token-mix).
 
