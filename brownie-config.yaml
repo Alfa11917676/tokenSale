@@ -15,9 +15,12 @@ networks:
   kovan:
     fee: 100000000000000000
     eth_usd_price: '0x9326BFA02ADD2366b30bacB125260Af641031331'
+    arnab_token: '0xD67270Fe1e7444E6bB143a796F9075BF5d0940dC'
+    weth: '0xd0a1e359811322d97991e03f863a0c30c2cf029c'
 wallets1:
   from_key: 6225ed0567b56dca5844ed9c15cbb129a37d38da874f5d1c6c36df4c06a92795
   from_mnemonic: claim unaware relax valley put tomato cheap ask despair cart script liberty
+  token_address: '0xD67270Fe1e7444E6bB143a796F9075BF5d0940dC'
 wallets2:
   from_key: 872240020864bdff226ef415eb80e083181bc2e36024023a6f912dcc8a6cd386
   # You'd have to change the accounts.add to accounts.from_mnemonic to use from_mnemonic

@@ -39,10 +39,10 @@ contract tokenSale is PriceConsumerV3, Ownable {
         _;
     }
 
-    constructor () {
+    constructor (address tokenAddress) {
         startTime = block.timestamp;
         PriceConsumerV3 chainLinkPrice = new PriceConsumerV3();
-        token = IERC20(0xD67270Fe1e7444E6bB143a796F9075BF5d0940dC);
+        token = IERC20(tokenAddress);
         one_eth_price = uint256(chainLinkPrice.getLatestPrice()).div(1e8);
         minimumThreshHoldAmount = 0.1393 ether;
     }
@@ -85,16 +85,17 @@ contract tokenSale is PriceConsumerV3, Ownable {
         } else if (block.timestamp > startTime+21 days && block.timestamp <= startTime+ 30 days){
             _amount = _amount;
         }
-        approveCandidate(_receiver, _amount);
-        transferToken(_receiver, _amount);
+     //   approveCandidate(_receiver, _amount);
+        transferToken (_receiver, _amount);
     }
 
-    function approveCandidate (address _receiver,  uint _amount) private onlyOwner returns (bool) {
-        return token.approve(_receiver, _amount);
+    function transferToken (address _receiver , uint _amount) private {
+        bool info = token.transferFrom(_msgSender(), _receiver, _amount);
+        require (info,'Token transfer failed');
     }
 
-    function transferToken (address _receiver , uint _amount) private onlyOwner returns (bool) {
-        return token.transferFrom(_msgSender(), _receiver, _amount);
+    function returnAddress (address toReturn) public returns(address) {
+        return toReturn;
     }
 
     function pausable () external onlyOwner returns (bool) {
@@ -108,7 +109,9 @@ contract tokenSale is PriceConsumerV3, Ownable {
     fallback () external payable {
         receiverBalances[msg.sender] += msg.value;
     }
+
     receive () external payable {
         emit moneyReceived(msg.sender, msg.value);
     }
+
 }
